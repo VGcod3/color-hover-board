@@ -2,7 +2,7 @@
 
 const board = document.querySelector('#board');
 const colours = ['#e71c3c', '#8e42ad', '#3498dd', '#e67e21', '#2ecc70', '#c600eb'];
-const SUARES_NUMBER = 810;
+const SUARES_NUMBER = 990;
 
 for (let i = 0; i < SUARES_NUMBER; i++) {
 	const square = document.createElement('div');
@@ -22,7 +22,12 @@ for (let i = 0; i < SUARES_NUMBER; i++) {
 
 	square.addEventListener('click', () => {
 		setColour(square);
-		square.classList.toggle('clicked');
+		square.classList.add('clicked');
+	})
+
+	square.addEventListener('dblclick', () => {
+		setColour(square);
+		square.classList.remove('clicked');
 	})
 
 	board.append(square);
@@ -41,6 +46,5 @@ function removeColour(element) {
 }
 
 function getRandomColour() {
-	const index = Math.floor(Math.random() * colours.length);
-	return colours[index];
+	return colours[Math.floor(Math.random() * colours.length)];
 }
